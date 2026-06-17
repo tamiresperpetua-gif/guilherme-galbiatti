@@ -533,14 +533,14 @@ box-shadow:0 25px 50px rgba(0,0,0,.15);
 </section>
 
 <!-- SOBRE -->
-<section id="sobre" class="reveal">
+<section id="sobre" class="reveal"> 
 
 <h2 class="section-title">Sobre</h2>
 
 <p style="max-width:800px;margin:auto;text-align:center;line-height:1.8;">
 Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto padrão em Curitiba e consultoria imobiliária em Catanduva, oferecendo atendimento personalizado e estratégico.
 </p>
-
+</section>  
 <!-- Imóveis -->
 
 <section id="imoveis" class="reveal">
@@ -798,13 +798,13 @@ function openModal(id) {
     const imovel = imoveis[id];
     if (!imovel) return;
 
-    // 👇 ISSO RESOLVE
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
 
     document.getElementById("modal").style.display = "flex";
+    document.body.style.overflow = "hidden";
 
     document.getElementById("modal-title").innerText = imovel.titulo;
     document.getElementById("modal-price").innerText = imovel.preco;
@@ -813,45 +813,33 @@ function openModal(id) {
     document.getElementById("modal-suites").innerText = imovel.suites;
     document.getElementById("modal-garagem").innerText = imovel.garagem;
     document.getElementById("modal-description").innerText = imovel.descricao;
-}
-  document.body.style.overflow = "hidden";
-  document.body.style.overflow = "auto";
 
     document.getElementById("modal-main-image").src =
         imovel.fotos[0];
 
-    const thumbs =
-        document.getElementById("thumbnails");
-
+    const thumbs = document.getElementById("thumbnails");
     thumbs.innerHTML = "";
 
     imovel.fotos.forEach(foto => {
-
         thumbs.innerHTML += `
-            <img
-            src="${foto}"
+            <img src="${foto}"
             onclick="document.getElementById('modal-main-image').src='${foto}'">
         `;
-
     });
 
     document.getElementById("whatsapp-imovel").href =
         `https://wa.me/5517997799409?text=${encodeURIComponent(
-            "Olá Guilherme! Tenho interesse no imóvel: " +
-            imovel.titulo
+            "Olá Guilherme! Tenho interesse no imóvel: " + imovel.titulo
         )}`;
 }
-
 
 // ======================
 // FECHAR MODAL
 // ======================
 
 function closeModal() {
-
-    document.getElementById("modal").style.display =
-        "none";
-
+    document.getElementById("modal").style.display = "none";
+    document.body.style.overflow = "auto";
 }
 
 
