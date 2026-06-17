@@ -504,7 +504,7 @@ box-shadow:0 25px 50px rgba(0,0,0,.15);
 <header class="navbar">
 
 <div class="logo">
-<img src="assets/logo.png" alt="Logo Guilherme Galbiatti" style="height:45px;">
+<img src="logo.png" alt="Logo Guilherme Galbiatti" style="height:45px;">
 </div>
 
 <ul>
@@ -646,6 +646,29 @@ Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto pa
 <option>R$ 500 mil a R$ 1 milhão</option>
 <option>R$ 1 milhão a R$ 3 milhões</option>
 <option>Acima de R$ 3 milhões</option>
+</select>
+
+  <select id="bairro" required>
+<option value="">Bairro desejado</option>
+
+<!-- CURITIBA -->
+<option>Batel</option>
+<option>Ecoville</option>
+<option>Água Verde</option>
+<option>Bigorrilho</option>
+<option>Cabral</option>
+<option>Ahú</option>
+<option>Juvevê</option>
+<option>Campo Comprido</option>
+<option>Santa Felicidade</option>
+
+<!-- CATANDUVA -->
+<option>Centro (Catanduva)</option>
+<option>Jardim do Bosque</option>
+<option>Parque Iracema</option>
+<option>Jardim Alpino</option>
+<option>Nova Catanduva</option>
+
 </select>
 
 <textarea id="mensagem" rows="5" placeholder="Descreva o imóvel desejado"></textarea>
@@ -843,7 +866,8 @@ window.addEventListener("click", (e) => {
 
 });
 
-
+const bairro = document.getElementById("bairro").value;
+  
 // ======================
 // FORMULÁRIO WHATSAPP
 // ======================
@@ -876,6 +900,7 @@ document
 Nome: ${nome}
 WhatsApp: ${telefone}
 Cidade: ${cidade}
+Bairro: ${bairro}
 Investimento: ${investimento}
 
 Mensagem:
