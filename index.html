@@ -96,11 +96,18 @@ font-size:1.2rem;
 .btn{
 background:#d4af37;
 padding:16px 35px;
-border-radius:6px;
+border-radius:8px;
 text-decoration:none;
 color:white;
 font-weight:600;
 display:inline-block;
+transition:.3s;
+box-shadow:0 8px 20px rgba(212,175,55,.35);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+background:#b58d18;
 }
 
 /* SECTIONS */
@@ -207,7 +214,6 @@ animation:float 2s infinite;
 }
 
   /* MODAL */
-
 .modal{
 display:none;
 position:fixed;
@@ -215,30 +221,24 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.75);
+background:rgba(0,0,0,.85);
 justify-content:center;
 align-items:center;
 z-index:99999;
+padding:20px;
 }
 
 .modal-content{
 background:white;
-padding:25px;
-border-radius:15px;
-max-width:700px;
-width:90%;
+width:95%;
+max-width:900px;
+max-height:90vh;
+overflow-y:auto;
+padding:30px;
+border-radius:20px;
 position:relative;
-animation:fadeIn .3s ease;
 }
 
-.close{
-position:absolute;
-right:15px;
-top:10px;
-font-size:30px;
-cursor:pointer;
-font-weight:bold;
-}
 
 .gallery{
 position:relative;
@@ -291,8 +291,19 @@ transform:scale(1);
   
 /* MOBILE */
 @media(max-width:768px){
-.hero h1{font-size:2.5rem;}
-.navbar ul{display:none;}
+
+.navbar {padding:15px;
+}
+
+.navbar ul{
+gap:15px;
+font-size:9rem;
+}
+
+.hero h1{
+font-size:2.3rem;
+}
+
 }
 
   .features{
@@ -365,40 +376,101 @@ left:100%;
 transform:scale(1.2) rotate(5deg);
 color:#b58d18;
 }
-  .modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.7);
-justify-content:center;
-align-items:center;
-z-index:99999;
-}
 
-.modal-content{
-background:white;
-padding:30px;
-border-radius:15px;
-max-width:500px;
-width:90%;
-animation:fadeIn .3s ease;
-}
 
-.close{
-position:absolute;
-right:20px;
-top:10px;
-font-size:30px;
-cursor:pointer;
-}
 
 @keyframes fadeIn{
 from{transform:scale(.8);opacity:0;}
 to{transform:scale(1);opacity:1;}
 }
+
+
+.modal-main-image{
+width:100%;
+height:450px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.thumbnails{
+display:flex;
+gap:10px;
+margin:15px 0;
+overflow-x:auto;
+}
+
+.thumbnails img{
+width:90px;
+height:70px;
+object-fit:cover;
+border-radius:8px;
+cursor:pointer;
+opacity:.7;
+transition:.3s;
+}
+
+.thumbnails img:hover{
+opacity:1;
+transform:scale(1.05);
+}
+
+.close{
+position:absolute;
+top:15px;
+right:20px;
+font-size:35px;
+cursor:pointer;
+}
+
+.property-info{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin:25px 0;
+}
+
+.info-box{
+background:#f5f5f5;
+padding:15px;
+border-radius:10px;
+text-align:center;
+}
+
+.info-box i{
+color:#d4af37;
+font-size:22px;
+margin-bottom:8px;
+display:block;
+}
+
+#modal-price{
+color:#d4af37;
+font-size:2rem;
+margin-bottom:15px;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:scale(.95);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+<!--CARD IMOVEIS-->
+.property{
+cursor:pointer;
+transition:.4s ease;
+}
+
+.property:hover{
+transform:translateY(-10px);
+box-shadow:0 25px 50px rgba(0,0,0,.15);
+}
+
 
 </style>
 </head>
@@ -442,39 +514,47 @@ to{transform:scale(1);opacity:1;}
 Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto padrão em Curitiba e consultoria imobiliária em Catanduva, oferecendo atendimento personalizado e estratégico.
 </p>
 
+<!-- Imóveis -->
+
 </section>
 
-<!-- IMÓVEIS -->
-<section id="imoveis" class="reveal">
+<section id="imoveis" class ="reveal">
 
-<h2 class="section-title">Imóveis em Destaque</h2>
-
-<div class="properties">
+<h2 class="section-title">
+Imóveis em Destaque
+</h2>
 
 <div class="property" onclick="openModal('batel')" style="cursor:pointer;">
-<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c">
-<div class="property-content">
-<h3>Batel - Curitiba</h3>
-<p>Apartamento de alto padrão</p>
-</div>
+    <img
+src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80"
+loading="lazy"
+alt="Apartamento Batel">
+    <div class="property-content">
+        <h3>Batel - Curitiba</h3>
+        <p>Apartamento de alto padrão</p>
+    </div>
 </div>
 
 <div class="property" onclick="openModal('ecoville')" style="cursor:pointer;">
-<img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde">
-<div class="property-content">
-<h3>Ecoville - Curitiba</h3>
-<p>Casa exclusiva</p>
-</div>
+    <img
+src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80"
+loading="lazy"
+alt="Apartamento Batel">
+    <div class="property-content">
+        <h3>Ecoville - Curitiba</h3>
+        <p>Casa em condomínio</p>
+    </div>
 </div>
 
 <div class="property" onclick="openModal('aguaverde')" style="cursor:pointer;">
-<img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e">
-<div class="property-content">
-<h3>Água Verde - Curitiba</h3>
-<p>Imóvel moderno</p>
-</div>
-</div>
-
+    <img
+src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80"
+loading="lazy"
+alt="Apartamento Batel">
+    <div class="property-content">
+        <h3>Água Verde - Curitiba</h3>
+        <p>Apartamento moderno</p>
+    </div>
 </div>
 
 </section>
@@ -552,133 +632,217 @@ Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto pa
 <i class="fab fa-whatsapp"></i>
 </a>
 
-
-  <!-- MODAL DOS IMÓVEIS -->
-<div id="modal" class="modal">
-
-    <div class="modal-content">
-
-        <span class="close" onclick="closeModal()">&times;</span>
-
-        <h2 id="modal-title"></h2>
-
-        <div class="gallery">
-
-            <img id="modal-image" src="" alt="Imóvel">
-
-            <div class="controls">
-                <button onclick="prevImage()">&#10094;</button>
-                <button onclick="nextImage()">&#10095;</button>
-            </div>
-
-        </div>
-
-        <p id="modal-text"></p>
-
-    </div>
-
-</div>
-
   
 <!-- SCRIPTS -->
 <script>
 
+// ======================
+// REVEAL AO ROLAR
+// ======================
 
-  let images = [];
-let currentIndex = 0;
-
-function openModal(id){
-
-const modal = document.getElementById("modal");
-
-const title = document.getElementById("modal-title");
-const text = document.getElementById("modal-text");
-const img = document.getElementById("modal-image");
-
-// GALERIAS DE CADA IMÓVEL
-if(id === "batel"){
-title.innerText = "Batel - Curitiba";
-text.innerText = "Apartamento de alto padrão com 3 suítes e área gourmet.";
-
-images = [
-"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-"https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-"https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde"
-];
-}
-
-if(id === "ecoville"){
-title.innerText = "Ecoville - Curitiba";
-text.innerText = "Casa em condomínio fechado com piscina e segurança.";
-
-images = [
-"https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde",
-"https://images.unsplash.com/photo-1600573472550-8090b5e0745e",
-"https://images.unsplash.com/photo-1600566752355-35792bedcfea"
-];
-}
-
-currentIndex = 0;
-img.src = images[currentIndex];
-
-modal.style.display = "flex";
-}
-
-function nextImage(){
-if(currentIndex < images.length - 1){
-currentIndex++;
-document.getElementById("modal-image").src = images[currentIndex];
-}
-}
-
-function prevImage(){
-if(currentIndex > 0){
-currentIndex--;
-document.getElementById("modal-image").src = images[currentIndex];
-}
-}
-
-function closeModal(){
-document.getElementById("modal").style.display = "none";
-}
-
-// fechar clicando fora
-window.onclick = function(e){
-const modal = document.getElementById("modal");
-if(e.target === modal){
-modal.style.display = "none";
-}
-}
-
-  
-// REVEAL
 const reveals = document.querySelectorAll(".reveal");
 
-window.addEventListener("scroll",()=>{
-reveals.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight - 100){
-el.classList.add("active");
+function revealOnScroll() {
+    reveals.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("active");
+        }
+    });
 }
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+
+// ======================
+// PARALLAX HERO
+// ======================
+
+window.addEventListener("scroll", () => {
+
+    const hero = document.querySelector(".hero");
+
+    hero.style.backgroundPositionY =
+        window.pageYOffset * 0.5 + "px";
+
 });
+
+
+// ======================
+// DADOS DOS IMÓVEIS
+// ======================
+
+const imoveis = {
+
+    batel: {
+        titulo: "Apartamento de Alto Padrão - Batel",
+        preco: "R$ 2.450.000",
+        area: "210m²",
+        quartos: "3 Quartos",
+        suites: "3 Suítes",
+        garagem: "3 Vagas",
+
+        descricao:
+        "Apartamento sofisticado em uma das regiões mais valorizadas de Curitiba.",
+
+        fotos: [
+            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+            "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+            "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80"
+        ]
+    },
+
+    ecoville: {
+        titulo: "Casa em Condomínio - Ecoville",
+        preco: "R$ 3.900.000",
+        area: "450m²",
+        quartos: "4 Quartos",
+        suites: "4 Suítes",
+        garagem: "4 Vagas",
+
+        descricao:
+        "Casa moderna com piscina, espaço gourmet e segurança 24 horas.",
+
+        fotos: [
+            "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80",
+            "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&q=80",
+            "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1200&q=80"
+        ]
+    },
+
+    aguaverde: {
+        titulo: "Apartamento Premium - Água Verde",
+        preco: "R$ 1.290.000",
+        area: "140m²",
+        quartos: "3 Quartos",
+        suites: "1 Suíte",
+        garagem: "2 Vagas",
+
+        descricao:
+        "Localização privilegiada próxima à Avenida República Argentina.",
+
+        fotos: [
+            "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=1200&q=80",
+            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
+            "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80"
+        ]
+    }
+
+};
+
+
+// ======================
+// MODAL DOS IMÓVEIS
+// ======================
+
+function openModal(id) {
+
+    const imovel = imoveis[id];
+
+    if (!imovel) return;
+
+    document.getElementById("modal").style.display = "flex";
+
+    document.getElementById("modal-title").innerText =
+        imovel.titulo;
+
+    document.getElementById("modal-price").innerText =
+        imovel.preco;
+
+    document.getElementById("modal-area").innerText =
+        imovel.area;
+
+    document.getElementById("modal-quartos").innerText =
+        imovel.quartos;
+
+    document.getElementById("modal-suites").innerText =
+        imovel.suites;
+
+    document.getElementById("modal-garagem").innerText =
+        imovel.garagem;
+
+    document.getElementById("modal-description").innerText =
+        imovel.descricao;
+
+    document.getElementById("modal-main-image").src =
+        imovel.fotos[0];
+
+    const thumbs =
+        document.getElementById("thumbnails");
+
+    thumbs.innerHTML = "";
+
+    imovel.fotos.forEach(foto => {
+
+        thumbs.innerHTML += `
+            <img
+            src="${foto}"
+            onclick="document.getElementById('modal-main-image').src='${foto}'">
+        `;
+
+    });
+
+    document.getElementById("whatsapp-imovel").href =
+        `https://wa.me/5517997799409?text=${encodeURIComponent(
+            "Olá Guilherme! Tenho interesse no imóvel: " +
+            imovel.titulo
+        )}`;
+}
+
+
+// ======================
+// FECHAR MODAL
+// ======================
+
+function closeModal() {
+
+    document.getElementById("modal").style.display =
+        "none";
+
+}
+
+
+// FECHAR CLICANDO FORA
+
+window.addEventListener("click", (e) => {
+
+    if (e.target.id === "modal") {
+
+        closeModal();
+
+    }
+
 });
 
-// PARALLAX
-window.addEventListener("scroll",()=>{
-const hero = document.querySelector(".hero");
-hero.style.backgroundPositionY = window.pageYOffset * 0.5 + "px";
-});
 
-// FORM WHATSAPP
-document.getElementById("leadForm").addEventListener("submit",function(e){
-e.preventDefault();
+// ======================
+// FORMULÁRIO WHATSAPP
+// ======================
 
-const nome = document.getElementById("nome").value;
-const telefone = document.getElementById("telefone").value;
-const cidade = document.getElementById("cidade").value;
-const investimento = document.getElementById("investimento").value;
-const mensagem = document.getElementById("mensagem").value;
+document
+.getElementById("leadForm")
+.addEventListener("submit", function(e){
 
-const texto = `Olá Guilherme!
+    e.preventDefault();
+
+    const nome =
+        document.getElementById("nome").value;
+
+    const telefone =
+        document.getElementById("telefone").value;
+
+    const cidade =
+        document.getElementById("cidade").value;
+
+    const investimento =
+        document.getElementById("investimento").value;
+
+    const mensagem =
+        document.getElementById("mensagem").value;
+
+    const texto =
+
+`Olá Guilherme!
 
 Nome: ${nome}
 WhatsApp: ${telefone}
@@ -688,42 +852,16 @@ Investimento: ${investimento}
 Mensagem:
 ${mensagem}`;
 
-window.open(`https://wa.me/5517997799409?text=${encodeURIComponent(texto)}`,"_blank");
+    window.open(
+
+        `https://wa.me/5517997799409?text=${encodeURIComponent(texto)}`,
+
+        "_blank"
+
+    );
+
 });
 
-
-  function openModal(id){
-
-const modal = document.getElementById("modal");
-
-const title = document.getElementById("modal-title");
-const text = document.getElementById("modal-text");
-
-if(id === "batel"){
-title.innerText = "Batel - Curitiba";
-text.innerText = "Apartamento de alto padrão com excelente localização, 3 suítes, 2 vagas e área gourmet.";
-}
-
-if(id === "ecoville"){
-title.innerText = "Ecoville - Curitiba";
-text.innerText = "Casa moderna em condomínio fechado com segurança 24h e piscina privativa.";
-}
-
-modal.style.display = "flex";
-}
-
-function closeModal(){
-document.getElementById("modal").style.display = "none";
-}
-
-// fechar clicando fora
-window.onclick = function(e){
-const modal = document.getElementById("modal");
-if(e.target === modal){
-modal.style.display = "none";
-}
-}
-  
 </script>
 
 <hr style="margin:40px auto; width:60px; border:1px solid #d4af37;">
@@ -780,18 +918,61 @@ Falar no WhatsApp
 
 </footer>
 
-<div id="modal" class="modal">
+</div>
 
-<div class="modal-content">
 
-<span class="close" onclick="closeModal()">&times;</span>
+  <div id="modal" class="modal">
 
-<h2 id="modal-title"></h2>
-<p id="modal-text"></p>
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <img id="modal-main-image" class="modal-main-image">
+
+        <div id="thumbnails" class="thumbnails"></div>
+
+        <h2 id="modal-title"></h2>
+
+        <div class="property-info">
+
+            <div class="info-box">
+                <i class="fas fa-ruler-combined"></i>
+                <span id="modal-area"></span>
+            </div>
+
+            <div class="info-box">
+                <i class="fas fa-bed"></i>
+                <span id="modal-quartos"></span>
+            </div>
+
+            <div class="info-box">
+                <i class="fas fa-bath"></i>
+                <span id="modal-suites"></span>
+            </div>
+
+            <div class="info-box">
+                <i class="fas fa-car"></i>
+                <span id="modal-garagem"></span>
+            </div>
+
+        </div>
+
+        <h3 id="modal-price"></h3>
+
+        <p id="modal-description"></p>
+
+        <a id="whatsapp-imovel"
+           target="_blank"
+           class="btn"
+           style="margin-top:20px;">
+            Tenho Interesse
+        </a>
+
+    </div>
 
 </div>
 
-</div>
+
   
 </body>
 </html>
