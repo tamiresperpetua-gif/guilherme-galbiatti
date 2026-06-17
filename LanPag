@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Guilherme Galbiatti | Imóveis de Alto Padrão em Curitiba e Catanduva</title>
+
+<meta name="description" content="Consultoria imobiliária premium em Curitiba e Catanduva.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+font-family:'Montserrat',sans-serif;
+overflow-x:hidden;
+color:#222;
+}
+
+/* NAVBAR */
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(12px);
+z-index:9999;
+}
+
+.logo{
+color:#d4af37;
+font-weight:700;
+letter-spacing:2px;
+}
+
+.navbar ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+}
+
+.navbar a:hover{color:#d4af37;}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+background:
+linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+background-size:cover;
+background-position:center;
+}
+
+.hero h1{
+font-size:4rem;
+font-family:'Playfair Display',serif;
+}
+
+.hero p{
+max-width:700px;
+margin:20px auto;
+font-size:1.2rem;
+}
+
+.btn{
+background:#d4af37;
+padding:16px 35px;
+border-radius:6px;
+text-decoration:none;
+color:white;
+font-weight:600;
+display:inline-block;
+}
+
+/* SECTIONS */
+section{padding:100px 10%;}
+
+.section-title{
+text-align:center;
+font-size:2.5rem;
+font-family:'Playfair Display',serif;
+margin-bottom:50px;
+}
+
+/* REVEAL */
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* PROPERTIES */
+.properties{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.property{
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 25px rgba(0,0,0,.1);
+background:white;
+}
+
+.property img{
+width:100%;
+height:220px;
+object-fit:cover;
+transition:.5s;
+}
+
+.property:hover img{
+transform:scale(1.08);
+}
+
+.property-content{
+padding:20px;
+}
+
+/* FORM */
+.form-section{
+background:#f5f5f5;
+}
+
+form{
+max-width:700px;
+margin:auto;
+}
+
+input,select,textarea{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:8px;
+}
+
+button{
+width:100%;
+padding:16px;
+background:#d4af37;
+border:none;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* WHATSAPP */
+.whatsapp-float{
+position:fixed;
+bottom:25px;
+right:25px;
+width:70px;
+height:70px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+color:white;
+text-decoration:none;
+animation:float 2s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{font-size:2.5rem;}
+.navbar ul{display:none;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+<div class="logo">GUILHERME GALBIATTI</div>
+
+<ul>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#imoveis">Imóveis</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+<div>
+<h1>Imóveis de Alto Padrão em Curitiba e Catanduva</h1>
+<p>Atendimento personalizado para compra, venda e investimento imobiliário.</p>
+<a href="https://wa.me/5517997799409" class="btn">Agendar Consultoria</a>
+</div>
+
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="reveal">
+
+<h2 class="section-title">Sobre</h2>
+
+<p style="max-width:800px;margin:auto;text-align:center;line-height:1.8;">
+Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto padrão em Curitiba e consultoria imobiliária em Catanduva, oferecendo atendimento personalizado e estratégico.
+</p>
+
+</section>
+
+<!-- IMÓVEIS -->
+<section id="imoveis" class="reveal">
+
+<h2 class="section-title">Imóveis em Destaque</h2>
+
+<div class="properties">
+
+<div class="property">
+<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c">
+<div class="property-content">
+<h3>Batel - Curitiba</h3>
+<p>Apartamento de alto padrão</p>
+</div>
+</div>
+
+<div class="property">
+<img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde">
+<div class="property-content">
+<h3>Ecoville - Curitiba</h3>
+<p>Casa exclusiva</p>
+</div>
+</div>
+
+<div class="property">
+<img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e">
+<div class="property-content">
+<h3>Água Verde - Curitiba</h3>
+<p>Imóvel moderno</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section>
+
+<h2 class="section-title">Diferenciais</h2>
+
+<div class="features">
+
+<div class="feature">
+<i class="fas fa-user-tie"></i>
+<h4>Atendimento Exclusivo</h4>
+</div>
+
+<div class="feature">
+<i class="fas fa-house"></i>
+<h4>Curadoria de Imóveis</h4>
+</div>
+
+<div class="feature">
+<i class="fas fa-handshake"></i>
+<h4>Negociação Segura</h4>
+</div>
+
+<div class="feature">
+<i class="fas fa-chart-line"></i>
+<h4>Visão de Investimento</h4>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTATO -->
+<section id="contato" class="form-section reveal">
+
+<h2 class="section-title">Quero Encontrar Meu Imóvel</h2>
+
+<form id="leadForm">
+
+<input type="text" id="nome" placeholder="Nome" required>
+<input type="tel" id="telefone" placeholder="WhatsApp" required>
+
+<select id="cidade" required>
+<option value="">Cidade</option>
+<option>Curitiba</option>
+<option>Catanduva</option>
+</select>
+
+<select id="investimento" required>
+<option value="">Faixa de investimento</option>
+<option>Até R$ 500 mil</option>
+<option>R$ 500 mil a R$ 1 milhão</option>
+<option>R$ 1 milhão a R$ 3 milhões</option>
+<option>Acima de R$ 3 milhões</option>
+</select>
+
+<textarea id="mensagem" rows="5" placeholder="Descreva o imóvel desejado"></textarea>
+
+<button type="submit">Quero Encontrar Meu Imóvel</button>
+
+</form>
+
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/5517997799409" class="whatsapp-float">
+<i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- SCRIPTS -->
+<script>
+
+// REVEAL
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll",()=>{
+reveals.forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight - 100){
+el.classList.add("active");
+}
+});
+});
+
+// PARALLAX
+window.addEventListener("scroll",()=>{
+const hero = document.querySelector(".hero");
+hero.style.backgroundPositionY = window.pageYOffset * 0.5 + "px";
+});
+
+// FORM WHATSAPP
+document.getElementById("leadForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+const nome = document.getElementById("nome").value;
+const telefone = document.getElementById("telefone").value;
+const cidade = document.getElementById("cidade").value;
+const investimento = document.getElementById("investimento").value;
+const mensagem = document.getElementById("mensagem").value;
+
+const texto = `Olá Guilherme!
+
+Nome: ${nome}
+WhatsApp: ${telefone}
+Cidade: ${cidade}
+Investimento: ${investimento}
+
+Mensagem:
+${mensagem}`;
+
+window.open(`https://wa.me/5517997799409?text=${encodeURIComponent(texto)}`,"_blank");
+});
+
+</script>
+
+<hr style="margin:40px auto; width:60px; border:1px solid #d4af37;">
+
+<!-- FOOTER -->
+<footer style="
+background:#111;
+color:white;
+text-align:center;
+padding:60px 20px;
+">
+
+<h3 style="color:#d4af37; font-size:1.8rem; margin-bottom:10px;">
+Guilherme Galbiatti
+</h3>
+
+<p style="margin:5px 0;">
+Consultor Imobiliário de Alto Padrão
+</p>
+
+<p style="margin:5px 0;">
+CRECI 159.992-F
+</p>
+
+<p style="margin:5px 0;">
+PL2 Imóveis • Curitiba - PR
+</p>
+
+<p style="margin:5px 0;">
+📍 Av. República Argentina, 1350, Sala 5 - Água Verde
+</p>
+
+<p style="margin:5px 0;">
+📱 WhatsApp: (17) 99779-9409
+</p>
+
+<p style="margin:5px 0;">
+📸 Instagram: 
+<a href="https://www.instagram.com/guilermegalbiatti16" target="_blank" 
+style="color:#d4af37;text-decoration:none;font-weight:600;">
+@GuilhermeGalbiatti16
+</a>
+</p>
+
+<a href="https://wa.me/5517997799409" class="btn" style="margin-top:20px; display:inline-block;">
+Falar no WhatsApp
+</a>
+
+<div style="margin-top:30px; font-size:14px; opacity:.8;">
+<a href="#sobre" style="color:white; margin:0 10px;">Sobre</a>
+<a href="#imoveis" style="color:white; margin:0 10px;">Imóveis</a>
+<a href="#contato" style="color:white; margin:0 10px;">Contato</a>
+</div>
+
+</footer>
+
+</body>
+</html>
