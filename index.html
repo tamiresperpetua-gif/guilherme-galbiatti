@@ -324,12 +324,18 @@ font-size:2.3rem;
 
  .features{
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:25px;
+grid-template-columns:1fr;
+gap:20px;
 margin-top:30px;
 }
 
-@media(min-width:768px){
+@media(min-width:600px){
+.features{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(min-width:1024px){
 .features{
 grid-template-columns:repeat(4,1fr);
 }
@@ -790,31 +796,26 @@ const imoveis = {
 function openModal(id) {
 
     const imovel = imoveis[id];
-
     if (!imovel) return;
+
+    // 👇 ISSO RESOLVE
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
     document.getElementById("modal").style.display = "flex";
 
-    document.getElementById("modal-title").innerText =
-        imovel.titulo;
-
-    document.getElementById("modal-price").innerText =
-        imovel.preco;
-
-    document.getElementById("modal-area").innerText =
-        imovel.area;
-
-    document.getElementById("modal-quartos").innerText =
-        imovel.quartos;
-
-    document.getElementById("modal-suites").innerText =
-        imovel.suites;
-
-    document.getElementById("modal-garagem").innerText =
-        imovel.garagem;
-
-    document.getElementById("modal-description").innerText =
-        imovel.descricao;
+    document.getElementById("modal-title").innerText = imovel.titulo;
+    document.getElementById("modal-price").innerText = imovel.preco;
+    document.getElementById("modal-area").innerText = imovel.area;
+    document.getElementById("modal-quartos").innerText = imovel.quartos;
+    document.getElementById("modal-suites").innerText = imovel.suites;
+    document.getElementById("modal-garagem").innerText = imovel.garagem;
+    document.getElementById("modal-description").innerText = imovel.descricao;
+}
+  document.body.style.overflow = "hidden";
+  document.body.style.overflow = "auto";
 
     document.getElementById("modal-main-image").src =
         imovel.fotos[0];
