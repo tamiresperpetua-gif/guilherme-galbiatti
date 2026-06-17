@@ -206,6 +206,89 @@ animation:float 2s infinite;
 100%{transform:translateY(0);}
 }
 
+  /* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.75);
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.modal-content{
+background:white;
+padding:25px;
+border-radius:15px;
+max-width:700px;
+width:90%;
+position:relative;
+animation:fadeIn .3s ease;
+}
+
+.close{
+position:absolute;
+right:15px;
+top:10px;
+font-size:30px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.gallery{
+position:relative;
+margin:20px 0;
+}
+
+.gallery img{
+width:100%;
+height:400px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.controls{
+position:absolute;
+top:50%;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+transform:translateY(-50%);
+padding:0 10px;
+}
+
+.controls button{
+width:auto;
+background:rgba(0,0,0,.6);
+color:white;
+border:none;
+font-size:24px;
+cursor:pointer;
+padding:12px 18px;
+border-radius:50%;
+}
+
+.controls button:hover{
+background:rgba(0,0,0,.9);
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:scale(.9);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+  
 /* MOBILE */
 @media(max-width:768px){
 .hero h1{font-size:2.5rem;}
@@ -368,7 +451,7 @@ Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto pa
 
 <div class="properties">
 
-<div class="property" onclick="openModal('batel')">
+<div class="property" onclick="openModal('batel')" style="cursor:pointer;">
 <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c">
 <div class="property-content">
 <h3>Batel - Curitiba</h3>
@@ -376,7 +459,7 @@ Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto pa
 </div>
 </div>
 
-<div class="property" onclick="openModal('batel')">
+<div class="property" onclick="openModal('ecoville')" style="cursor:pointer;">
 <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde">
 <div class="property-content">
 <h3>Ecoville - Curitiba</h3>
@@ -384,7 +467,7 @@ Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto pa
 </div>
 </div>
 
-<div class="property" onclick="openModal('batel')">
+<div class="property" onclick="openModal('aguaverde')" style="cursor:pointer;">
 <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e">
 <div class="property-content">
 <h3>Água Verde - Curitiba</h3>
@@ -469,9 +552,105 @@ Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto pa
 <i class="fab fa-whatsapp"></i>
 </a>
 
+
+  <!-- MODAL DOS IMÓVEIS -->
+<div id="modal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <h2 id="modal-title"></h2>
+
+        <div class="gallery">
+
+            <img id="modal-image" src="" alt="Imóvel">
+
+            <div class="controls">
+                <button onclick="prevImage()">&#10094;</button>
+                <button onclick="nextImage()">&#10095;</button>
+            </div>
+
+        </div>
+
+        <p id="modal-text"></p>
+
+    </div>
+
+</div>
+
+  
 <!-- SCRIPTS -->
 <script>
 
+
+  let images = [];
+let currentIndex = 0;
+
+function openModal(id){
+
+const modal = document.getElementById("modal");
+
+const title = document.getElementById("modal-title");
+const text = document.getElementById("modal-text");
+const img = document.getElementById("modal-image");
+
+// GALERIAS DE CADA IMÓVEL
+if(id === "batel"){
+title.innerText = "Batel - Curitiba";
+text.innerText = "Apartamento de alto padrão com 3 suítes e área gourmet.";
+
+images = [
+"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+"https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+"https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde"
+];
+}
+
+if(id === "ecoville"){
+title.innerText = "Ecoville - Curitiba";
+text.innerText = "Casa em condomínio fechado com piscina e segurança.";
+
+images = [
+"https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde",
+"https://images.unsplash.com/photo-1600573472550-8090b5e0745e",
+"https://images.unsplash.com/photo-1600566752355-35792bedcfea"
+];
+}
+
+currentIndex = 0;
+img.src = images[currentIndex];
+
+modal.style.display = "flex";
+}
+
+function nextImage(){
+if(currentIndex < images.length - 1){
+currentIndex++;
+document.getElementById("modal-image").src = images[currentIndex];
+}
+}
+
+function prevImage(){
+if(currentIndex > 0){
+currentIndex--;
+document.getElementById("modal-image").src = images[currentIndex];
+}
+}
+
+function closeModal(){
+document.getElementById("modal").style.display = "none";
+}
+
+// fechar clicando fora
+window.onclick = function(e){
+const modal = document.getElementById("modal");
+if(e.target === modal){
+modal.style.display = "none";
+}
+}
+
+  
 // REVEAL
 const reveals = document.querySelectorAll(".reveal");
 
