@@ -48,6 +48,11 @@ color:#d4af37;
 font-weight:700;
 letter-spacing:2px;
 }
+  
+  .logo img{
+height:45px;
+object-fit:contain;
+}
 
 .navbar ul{
 display:flex;
@@ -277,16 +282,54 @@ left:100%;
 transform:scale(1.2) rotate(5deg);
 color:#b58d18;
 }
+  .modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.modal-content{
+background:white;
+padding:30px;
+border-radius:15px;
+max-width:500px;
+width:90%;
+animation:fadeIn .3s ease;
+}
+
+.close{
+position:absolute;
+right:20px;
+top:10px;
+font-size:30px;
+cursor:pointer;
+}
+
+@keyframes fadeIn{
+from{transform:scale(.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
 
 </style>
 </head>
 
+
+<!-- Inicio -->
 <body>
 
 <!-- NAVBAR -->
 <header class="navbar">
 
-<div class="logo">GUILHERME GALBIATTI</div>
+<div class="logo">
+<img src="LOGO-AQUI.png" alt="Logo Guilherme Galbiatti" style="height:45px;">
+</div>
 
 <ul>
 <li><a href="#sobre">Sobre</a></li>
@@ -325,7 +368,7 @@ Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto pa
 
 <div class="properties">
 
-<div class="property">
+<div class="property" onclick="openModal('batel')">
 <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c">
 <div class="property-content">
 <h3>Batel - Curitiba</h3>
@@ -333,7 +376,7 @@ Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto pa
 </div>
 </div>
 
-<div class="property">
+<div class="property" onclick="openModal('batel')">
 <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde">
 <div class="property-content">
 <h3>Ecoville - Curitiba</h3>
@@ -341,7 +384,7 @@ Guilherme Galbiatti atua no mercado imobiliário com foco em imóveis de alto pa
 </div>
 </div>
 
-<div class="property">
+<div class="property" onclick="openModal('batel')">
 <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e">
 <div class="property-content">
 <h3>Água Verde - Curitiba</h3>
@@ -469,6 +512,39 @@ ${mensagem}`;
 window.open(`https://wa.me/5517997799409?text=${encodeURIComponent(texto)}`,"_blank");
 });
 
+
+  function openModal(id){
+
+const modal = document.getElementById("modal");
+
+const title = document.getElementById("modal-title");
+const text = document.getElementById("modal-text");
+
+if(id === "batel"){
+title.innerText = "Batel - Curitiba";
+text.innerText = "Apartamento de alto padrão com excelente localização, 3 suítes, 2 vagas e área gourmet.";
+}
+
+if(id === "ecoville"){
+title.innerText = "Ecoville - Curitiba";
+text.innerText = "Casa moderna em condomínio fechado com segurança 24h e piscina privativa.";
+}
+
+modal.style.display = "flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display = "none";
+}
+
+// fechar clicando fora
+window.onclick = function(e){
+const modal = document.getElementById("modal");
+if(e.target === modal){
+modal.style.display = "none";
+}
+}
+  
 </script>
 
 <hr style="margin:40px auto; width:60px; border:1px solid #d4af37;">
@@ -525,5 +601,18 @@ Falar no WhatsApp
 
 </footer>
 
+<div id="modal" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">&times;</span>
+
+<h2 id="modal-title"></h2>
+<p id="modal-text"></p>
+
+</div>
+
+</div>
+  
 </body>
 </html>
